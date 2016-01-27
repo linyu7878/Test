@@ -10,7 +10,7 @@ public class TestCmd {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException {
-		t1();//增加一个注释-test-add
+		t1();// 去掉一个注释
 	}
 
 	public static void t1() throws IOException, InterruptedException {
