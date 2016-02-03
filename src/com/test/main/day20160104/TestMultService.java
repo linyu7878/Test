@@ -1,6 +1,7 @@
 package com.test.main.day20160104;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;
+import com.runlion.shop.dao.BspCommentMapper;
 import com.runlion.shop.entity.BspProducts;
 import com.runlion.shop.entity.BspShipaddresses;
 import com.runlion.shop.entity.ProductComboInfo;
@@ -24,7 +26,8 @@ public class TestMultService {
 
 	public static void main(String[] args) throws Exception {
 
-		queryUserInvoices();
+		t11();
+		// queryUserInvoices();
 		// addUserInvoice();
 		// queryProductCommentsLimit();
 		// queryShopcart();
@@ -41,6 +44,24 @@ public class TestMultService {
 		// queryPlaceByBrand();
 		// queryAttrInit();
 		System.exit(0);
+	}
+
+	public static void t11() throws Exception {
+		BspCommentMapper s = (BspCommentMapper) getBean("bspCommentMapper");
+		long b = System.currentTimeMillis();
+		Map<String, Object> par = new HashMap<String, Object>();
+		par.put("START_NUM", 0);
+		par.put("LIMIT_NUM", 10);
+		par.put("cid", null);
+		par.put("username", null);
+		par.put("name", null);
+		par.put("score", null);
+		par.put("status", null);
+		List<Map<String, Object>> list = s.selectByExamplePrice(par);
+		long use = System.currentTimeMillis() - b;
+		println("------------use:[" + use + "]ms");
+		String str = JSON.toJSONString(list);
+		println(str);
 	}
 
 	public static void queryUserInvoices() throws Exception {

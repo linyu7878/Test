@@ -8,6 +8,8 @@ import com.runlion.shop.entity.nc.PresellAccountDetailPOJO;
 import com.runlion.shop.entity.nc.TransferTypePOJO;
 import com.runlion.shop.entity.nc.YSKPOJO;
 import com.runlion.shop.service.ncinterface.NcInterface;
+import com.runlion.shop.service.ncinterface.NcRequestParam;
+import com.runlion.shop.service.ncinterface.NcReturnResult;
 import com.runlion.shop.service.presell.PresellService;
 
 /**
@@ -16,7 +18,8 @@ import com.runlion.shop.service.presell.PresellService;
 public class TestNcInterface {
 
 	public static void main(String[] args) throws Exception {
-		queryIncomeDetailLimit();
+		testCheckYxedSuccess();
+		// queryIncomeDetailLimit();
 		// getReceiptTypeInfo();
 		// queryInType();
 		// queryOutType();
@@ -24,6 +27,15 @@ public class TestNcInterface {
 		// t1();
 		// t2();
 
+	}
+
+	public static void testCheckYxedSuccess() throws Exception {
+		NcRequestParam param = new NcRequestParam();
+		param.setCustcode("2010100346");
+		param.setPk_corp("1002");
+		NcReturnResult map = NcInterface.checkYxedSuccess(param);
+		String str = JSON.toJSONString(map);
+		System.out.println(str);
 	}
 
 	public static void queryIncomeDetailLimit() throws Exception {
