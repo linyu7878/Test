@@ -11,8 +11,8 @@ public class Test {
 	public static void main(String[] args) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("a", "12");
-
 		println(map);
+
 	}
 
 	public static void t1() {
